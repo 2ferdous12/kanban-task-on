@@ -381,7 +381,7 @@
         "isActive" : false,
         "columns": [
           {
-            "name": "Now",
+            "name": "storeg",
             "tasks": [
               {
                 "title": "Launch version one",
@@ -420,11 +420,11 @@
             ]
           },
           {
-            "name": "Next",
+            "name": "Shop",
             "tasks": []
           },
           {
-            "name": "Later",
+            "name": "Product",
             "tasks": []
           }
         ]

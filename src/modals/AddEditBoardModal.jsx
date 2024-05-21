@@ -6,6 +6,7 @@ import boardsSlice from "../redux/boardsSlice";
 
 const AddEditBoardModal = ({setIsBoardModalOpen, type}) => {
     const [name, setName] = useState("");
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
     const dispatch = useDispatch();
     const [newColumns, setNewColumns] = useState([
       { name: "Todo", tasks: [], id: uuidv4() },
@@ -17,6 +18,16 @@ const AddEditBoardModal = ({setIsBoardModalOpen, type}) => {
     const board = useSelector((state) => state.boards).find(
         (board) => board.isActive
       );
+
+      if (type === "edit" && isFirstLoad) {
+        setNewColumns(
+          board.columns.map((col) => {
+            return { ...col, id: uuidv4() };
+          })
+        );
+        setName(board.name);
+        setIsFirstLoad(false);
+      }
 
     const onChange = (id, newValue) => {
         setNewColumns((prevState) => {
